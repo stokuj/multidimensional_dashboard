@@ -40,6 +40,7 @@ Projekt oparty jest o model MVC:
     ├── dashApp.py
     ├── resourceController.py
     ├── main.py
+    ├── requirements.txt
     └── web/
         └── main.html
 
@@ -47,17 +48,16 @@ Projekt oparty jest o model MVC:
 
 1. Zainstaluj wymagane biblioteki:
 
-pip install dash pandas plotly eel openpyxl
+pip install -r requirements.txt
 
 2. Uruchom aplikację:
 
 python main.py
 
-3. Otwórz przeglądarkę – aplikacja uruchomi się automatycznie (dzięki Eel) i będzie dostępna pod adresem http://localhost.
+3. Aplikacja uruchomi się automatycznie (dzięki Eel) i będzie dostępna pod adresem http://localhost.
 
 ## ⚠️ Uwaga
 
-- Serwer automatycznie wyłącza się przy zamykaniu przeglądarki dzięki osadzonej funkcji JavaScript (/shutdown).
 - W przypadku błędów parsowania pliku, użytkownik otrzyma informację w interfejsie.
 
 
