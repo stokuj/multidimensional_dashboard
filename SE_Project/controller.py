@@ -7,6 +7,7 @@ from dash import html
 from dash import dash_table
 import eel
 from dash.dependencies import Input, Output, State
+from flask import request
 import pandas as pd
 # noinspection PyMethodMayBeStatic
 
@@ -91,6 +92,17 @@ def update_table(contents, filename):
 
     return table
 
+@app.server.route('/shutdown', methods=['POST'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
+
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
 def run_server():
     app.run(debug=False, use_reloader=False)  # Turn off reloader if inside Jupyter
 
@@ -110,10 +122,6 @@ def eel_part():
 
     while True:
         eel.sleep(5.0)  # Use eel.sleep(), not time.sleep()
-
-
-
-
 
 class Controller:
     def _init_view(self):

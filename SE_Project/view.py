@@ -40,13 +40,10 @@ class View:
             'padding': '6px'
         }
 
+
         app.layout = html.Div([
             html.Br(),
-            html.H1('Multidimensional Data Visualization',
-                    style={
-                        "textAlign": "center",
-                    }
-                    ),
+            html.H1('Multidimensional Data Visualization', style={"textAlign": "center"}),
             html.Br(),
             dcc.Tabs([
                 dcc.Tab(style=tab_style, selected_style=tab_selected_style, label='Program', children=[
@@ -87,6 +84,16 @@ class View:
                     ),
                 ]),
             ]),
-
+            
+            # ⬇⬇⬇ Dodajemy JS do obsługi zamknięcia
+            html.Script("""
+    window.onbeforeunload = function() {
+        fetch('/shutdown', {
+            method: 'POST',
+            keepalive: true
+        });
+    };
+""")
 
         ])
+
