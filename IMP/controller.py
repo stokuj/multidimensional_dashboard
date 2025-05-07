@@ -92,17 +92,6 @@ def update_table(contents, filename):
 
     return table
 
-@app.server.route('/shutdown', methods=['POST'])
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
-
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-
 def run_server():
     app.run(debug=False, use_reloader=False)  # Turn off reloader if inside Jupyter
 
