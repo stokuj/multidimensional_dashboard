@@ -1,5 +1,8 @@
-from model import Model
-from view import View
+from .model import Model
+from .view import View
+from pathlib import Path
+from threading import Thread
+import socket
 
 import plotly.graph_objects as go
 import plotly.express as px
@@ -96,21 +99,22 @@ def run_server():
     app.run(debug=False, use_reloader=False)  # Turn off reloader if inside Jupyter
 
 
+def _pick_free_port(preferred_port=8000):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        try:
+            sock.bind(("localhost", preferred_port))
+            return preferred_port
+        except OSError:
+            sock.bind(("localhost", 0))
+            return sock.getsockname()[1]
+
+
 def eel_part():
-    eel.init('web')
-
-    def my_other_thread():
-        eel.sleep(5.0)  # Use eel.sleep(), not time.sleep()
-
-    eel.spawn(my_other_thread)
-
-    eel.start('main.html', block=False)  # Don't block on this call
-
-    eel.sleep(2.0)
-    run_server()
-
-    while True:
-        eel.sleep(5.0)  # Use eel.sleep(), not time.sleep()
+    web_dir = Path(__file__).resolve().parent / "web"
+    eel.init(str(web_dir))
+    Thread(target=run_server, daemon=True).start()
+    eel_port = _pick_free_port(8000)
+    eel.start("main.html", host="localhost", port=eel_port, block=True)
 
 class Controller:
     def _init_view(self):

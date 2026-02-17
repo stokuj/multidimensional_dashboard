@@ -1,8 +1,8 @@
-# 📊 Multidimensional Data Visualization Dashboard
+# ?? Multidimensional Data Visualization Dashboard
 
 Interactive web application based on Dash, Plotly, and Eel, enabling visualization of multidimensional data using parallel plots. The project is organized according to the MVC (Model-View-Controller) architecture.
 
-## 🚀 Features
+## ?? Features
 
 - Upload data files in formats: CSV, XLS, TSV, TXT
 - Dynamic data visualization using:
@@ -13,7 +13,7 @@ Interactive web application based on Dash, Plotly, and Eel, enabling visualizati
 - JavaScript integration via Eel (e.g., for server shutdown)
 - Color-coded data visualization for better pattern recognition
 
-## 🛠 Technologies
+## ?? Technologies
 
 - **Python** - Core programming language
 - **Dash** - Web application framework for building analytical web applications
@@ -23,7 +23,7 @@ Interactive web application based on Dash, Plotly, and Eel, enabling visualizati
 - **HTML/CSS/JS** - Frontend (via Dash)
 - **Bootstrap Components** - For responsive UI elements
 
-## 🧩 Architecture
+## ?? Architecture
 
 The project follows the MVC (Model-View-Controller) pattern:
 
@@ -39,24 +39,25 @@ The project follows the MVC (Model-View-Controller) pattern:
   - `controller.py` - Contains callback functions and application logic
   - `main.py` - Application entry point
 
-## 📂 Project Structure
+## ?? Project Structure
 
-    IMP/
-    ├── controller.py      # Controller component with callback functions
-    ├── view.py            # View component defining UI layout
-    ├── model.py           # Model component integrating other components
-    ├── data.py            # Data structures and visualization settings
-    ├── dashApp.py         # Dash application creation
-    ├── resourceController.py # File parsing and data processing
-    ├── main.py            # Application entry point
-    ├── assets/            # Static assets for Dash
-    └── web/
-        └── main.html      # Entry point for Eel application
+    app/
+    +�� controller.py      # Controller component with callback functions
+    +�� view.py            # View component defining UI layout
+    +�� model.py           # Model component integrating other components
+    +�� data.py            # Data structures and visualization settings
+    +�� dashApp.py         # Dash application creation
+    +�� resourceController.py # File parsing and data processing
+    +�� assets/            # Static assets for Dash
+    L�� web/
+        L�� main.html      # Entry point for Eel application
+
+    main.py            # Application entry point
 
     Exemplary_data/
-    └── League_of_legends_stats.csv # Sample data file
+    L�� League_of_legends_stats.csv # Sample data file
 
-## 🔄 Data Flow
+## ?? Data Flow
 
 1. User uploads a data file through the UI
 2. The file is parsed by `resourceController.py`
@@ -64,7 +65,7 @@ The project follows the MVC (Model-View-Controller) pattern:
 4. The visualization is updated based on the selected graph type
 5. The data is displayed in both graphical and tabular formats
 
-## ▶️ Getting Started
+## ?? Getting Started
 
 ### Prerequisites
 
@@ -88,31 +89,35 @@ uv sync
 
 1. Run the application:
 ```
-uv run python IMP/main.py
+uv run python main.py
 ```
 
 2. The application will automatically open in your default web browser at http://127.0.0.1:8050/
 
-## 💡 Usage
+## ?? Usage
 
 1. **Upload Data**: Use the drag-and-drop area or click to select files (CSV, XLS, TSV, TXT)
 2. **Visualize Data**: The data will be automatically visualized using Parallel Coordinates by default
 3. **Change Visualization**: Go to the Settings tab to switch between Parallel Coordinates and Parallel Categories
 4. **Interact with Data**: Use the interactive table to filter, sort, and explore your data
 
-## ⚠️ Troubleshooting
+## ?? Troubleshooting
 
 - If file parsing errors occur, the user will receive a notification in the interface
 - Make sure your data file has proper formatting and column headers
 - For optimal visualization, numerical data works best with Parallel Coordinates, while categorical data works best with Parallel Categories
 
-## 🤝 Contributing
+## ?? Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-## 📄 License
+## ?? License
 
 This project is licensed under the MIT License.
 
 ---
+
+
+
+
 

@@ -1,9 +1,8 @@
 # noinspection PyMethodMayBeStatic
 
-from resourceController import ResourceController
-from data import Data
-from dashApp import DashApp
-from resourceController import  ResourceController
+from .resourceController import ResourceController
+from .data import Data
+from .dashApp import DashApp
 
 class Model:
     DashAppObj = DashApp()
