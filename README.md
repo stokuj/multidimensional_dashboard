@@ -49,7 +49,6 @@ The project follows the MVC (Model-View-Controller) pattern:
     ├── dashApp.py         # Dash application creation
     ├── resourceController.py # File parsing and data processing
     ├── main.py            # Application entry point
-    ├── requirements.txt   # Project dependencies
     ├── assets/            # Static assets for Dash
     └── web/
         └── main.html      # Entry point for Eel application
@@ -69,8 +68,8 @@ The project follows the MVC (Model-View-Controller) pattern:
 
 ### Prerequisites
 
-- Python 3.6 or higher
-- pip (Python package installer)
+- Python 3.11 or higher
+- uv (Python package and environment manager)
 
 ### Installation
 
@@ -80,16 +79,16 @@ git clone https://github.com/yourusername/multidimensional_dashboard.git
 cd multidimensional_dashboard
 ```
 
-2. Install required libraries:
+2. Synchronize dependencies:
 ```
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Running the Application
 
 1. Run the application:
 ```
-python main.py
+uv run python IMP/main.py
 ```
 
 2. The application will automatically open in your default web browser at http://127.0.0.1:8050/
@@ -116,3 +115,4 @@ Contributions, issues, and feature requests are welcome!
 This project is licensed under the MIT License.
 
 ---
+
