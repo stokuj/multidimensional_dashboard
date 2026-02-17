@@ -3,6 +3,8 @@ from .view import View
 from pathlib import Path
 from threading import Thread
 import socket
+import os
+import requests
 
 import plotly.graph_objects as go
 import plotly.express as px
@@ -99,6 +101,15 @@ def run_server():
     app.run(debug=False, use_reloader=False)  # Turn off reloader if inside Jupyter
 
 
+@app.server.route("/shutdown", methods=["POST"])
+def shutdown():
+    shutdown_func = request.environ.get("werkzeug.server.shutdown")
+    if shutdown_func is None:
+        return "Server shutdown unavailable.", 500
+    shutdown_func()
+    return "Server shutting down.", 200
+
+
 def _pick_free_port(preferred_port=8000):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         try:
@@ -109,12 +120,20 @@ def _pick_free_port(preferred_port=8000):
             return sock.getsockname()[1]
 
 
+def _close_app(*_args):
+    try:
+        requests.post("http://127.0.0.1:8050/shutdown", timeout=1)
+    except requests.RequestException:
+        pass
+    os._exit(0)
+
+
 def eel_part():
     web_dir = Path(__file__).resolve().parent / "web"
     eel.init(str(web_dir))
     Thread(target=run_server, daemon=True).start()
     eel_port = _pick_free_port(8000)
-    eel.start("main.html", host="localhost", port=eel_port, block=True)
+    eel.start("main.html", host="localhost", port=eel_port, block=True, close_callback=_close_app)
 
 class Controller:
     def _init_view(self):

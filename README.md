@@ -1,123 +1,59 @@
-# ?? Multidimensional Data Visualization Dashboard
+# Multidimensional Data Visualization Dashboard
 
-Interactive web application based on Dash, Plotly, and Eel, enabling visualization of multidimensional data using parallel plots. The project is organized according to the MVC (Model-View-Controller) architecture.
+Interactive dashboard for exploring multidimensional datasets with Plotly and Dash, wrapped in an Eel desktop window.
 
-## ?? Features
+## Features
 
-- Upload data files in formats: CSV, XLS, TSV, TXT
-- Dynamic data visualization using:
-  - Parallel Coordinates - visualizes numerical data across multiple dimensions
-  - Parallel Categories - visualizes categorical data across multiple dimensions
-- Interactive tabular data view with filtering and sorting capabilities
-- Browser-based user interface with tabbed navigation
-- JavaScript integration via Eel (e.g., for server shutdown)
-- Color-coded data visualization for better pattern recognition
+- Upload and parse `CSV`, `XLS/XLSX`, `TSV`, and `TXT` files
+- Visualize data with Parallel Coordinates and Parallel Categories
+- Inspect uploaded data in an interactive Dash table (filter, sort, paginate)
+- Run as a desktop app (Eel window) while serving Dash locally
 
-## ?? Technologies
+## Tech Stack
 
-- **Python** - Core programming language
-- **Dash** - Web application framework for building analytical web applications
-- **Plotly** - Interactive visualization library
-- **Pandas** - Data manipulation and analysis library
-- **Eel** - Library for creating simple Electron-like offline HTML/JS GUI apps
-- **HTML/CSS/JS** - Frontend (via Dash)
-- **Bootstrap Components** - For responsive UI elements
+- Python 3.11+
+- Dash
+- Plotly
+- Pandas
+- Eel
+- `uv` for dependency and environment management
 
-## ?? Architecture
+## Project Structure
 
-The project follows the MVC (Model-View-Controller) pattern:
-
-- **Model**: Processes data and contains application logic
-  - `model.py` - Main model class that integrates other components
-  - `data.py` - Manages data structures and visualization settings
-  - `resourceController.py` - Handles file parsing and data processing
-  - `dashApp.py` - Manages Dash application creation
-- **View**: Responsible for the user interface
-  - `view.py` - Defines UI components and layout
-  - `web/main.html` - Entry point for the Eel application
-- **Controller**: Manages flow between model and view
-  - `controller.py` - Contains callback functions and application logic
-  - `main.py` - Application entry point
-
-## ?? Project Structure
-
-    app/
-    +¦¦ controller.py      # Controller component with callback functions
-    +¦¦ view.py            # View component defining UI layout
-    +¦¦ model.py           # Model component integrating other components
-    +¦¦ data.py            # Data structures and visualization settings
-    +¦¦ dashApp.py         # Dash application creation
-    +¦¦ resourceController.py # File parsing and data processing
-    +¦¦ assets/            # Static assets for Dash
-    L¦¦ web/
-        L¦¦ main.html      # Entry point for Eel application
-
-    main.py            # Application entry point
-
-    Exemplary_data/
-    L¦¦ League_of_legends_stats.csv # Sample data file
-
-## ?? Data Flow
-
-1. User uploads a data file through the UI
-2. The file is parsed by `resourceController.py`
-3. The data is processed and a COLOR_ID column is added for visualization
-4. The visualization is updated based on the selected graph type
-5. The data is displayed in both graphical and tabular formats
-
-## ?? Getting Started
-
-### Prerequisites
-
-- Python 3.11 or higher
-- uv (Python package and environment manager)
-
-### Installation
-
-1. Clone the repository:
-```
-git clone https://github.com/yourusername/multidimensional_dashboard.git
-cd multidimensional_dashboard
+```text
+.
+|- app/
+|  |- controller.py
+|  |- model.py
+|  |- view.py
+|  |- data.py
+|  |- resourceController.py
+|  |- dashApp.py
+|  |- assets/
+|  \- web/
+|     \- main.html
+|- Exemplary_data/
+|  \- League_of_legends_stats.csv
+|- main.py
+|- pyproject.toml
+\- uv.lock
 ```
 
-2. Synchronize dependencies:
-```
+## Getting Started
+
+1. Install dependencies and run app:
+
+```bash
 uv sync
-```
-
-### Running the Application
-
-1. Run the application:
-```
 uv run python main.py
 ```
 
-2. The application will automatically open in your default web browser at http://127.0.0.1:8050/
+## Runtime Behavior
 
-## ?? Usage
+- Dash server runs at `http://127.0.0.1:8050`.
+- Eel starts a local desktop host (default `localhost:8000`, with automatic fallback if the port is busy).
+- Closing the desktop window also shuts down the Dash server.
 
-1. **Upload Data**: Use the drag-and-drop area or click to select files (CSV, XLS, TSV, TXT)
-2. **Visualize Data**: The data will be automatically visualized using Parallel Coordinates by default
-3. **Change Visualization**: Go to the Settings tab to switch between Parallel Coordinates and Parallel Categories
-4. **Interact with Data**: Use the interactive table to filter, sort, and explore your data
+## License
 
-## ?? Troubleshooting
-
-- If file parsing errors occur, the user will receive a notification in the interface
-- Make sure your data file has proper formatting and column headers
-- For optimal visualization, numerical data works best with Parallel Coordinates, while categorical data works best with Parallel Categories
-
-## ?? Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## ?? License
-
-This project is licensed under the MIT License.
-
----
-
-
-
-
-
+MIT (see `LICENSE`).
