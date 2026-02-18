@@ -18,6 +18,25 @@ Interactive dashboard for exploring multidimensional datasets with Plotly and Da
 - Eel
 - `uv` for dependency and environment management
 
+## Showcase
+
+### GUI
+
+The application runs as a desktop window (Eel) with an embedded Dash interface. The layout consists of:
+
+- **Tab bar** — two tabs: `Program` (active by default) and `Settings`.
+- **File drop zone** — a dashed red-bordered area at the top of the `Program` tab accepting drag-and-drop or manual file selection (`CSV`, `XLSX`, `TSV`, `TXT`).
+- **Chart area** — occupies the main body of the window and updates automatically after a file is loaded.
+- **Color legend** — a `COLOR_ID` colorbar (dark purple → yellow scale, 0–18) displayed to the right of every chart.
+
+### Visualization Modes
+
+**Parallel Coordinates** (continuous axes) — each data record is drawn as a polyline crossing all numeric axes. Axes shown in the example: `ID`, `KDA`, `VS/min`, `CS/min`, `DMG/min`, `W/L`, `COLOR_ID`. Line color maps to `COLOR_ID`, making clusters and outliers immediately visible against the gradient scale.
+
+**Parallel Categories** (discrete/binned axes) — records are grouped into colored ribbon bands between axes. The same columns are displayed as stacked categorical segments with labeled tick values. Ribbon width encodes the number of records sharing that value combination, and color again follows the `COLOR_ID` scale, highlighting which category groups dominate each dimension.
+
+<img width="1249" height="806" alt="Parallel Coordinates" src="https://github.com/user-attachments/assets/c8e9d643-e671-4ad2-b1bc-b59d33f60cd4" />
+<img width="1248" height="790" alt="Parallel Categories" src="https://github.com/user-attachments/assets/8cadcb4a-eca4-470e-94c6-995ef4163b52" />
 ## Project Structure
 
 ```text
