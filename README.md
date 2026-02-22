@@ -2,21 +2,30 @@
 
 Interactive dashboard for exploring multidimensional datasets with Plotly and Dash, wrapped in an Eel desktop window.
 
+## Project Structure
+
+```text
+|- pyproject.toml
+|- uv.lock
+|- Exemplary_data/
+|- app/
+|  |- controller.py
+|  |- model.py
+|  |- view.py
+|  |- data.py
+|  |- resourceController.py
+|  |- dashApp.py
+|  |- assets/
+|  \- web/main.html
+|- main.py
+```
+
 ## Features
 
 - Upload and parse `CSV`, `XLS/XLSX`, `TSV`, and `TXT` files
-- Visualize data with Parallel Coordinates and Parallel Categories
+- Visualize data with **Parallel Coordinates** and **Parallel Categories**
 - Inspect uploaded data in an interactive Dash table (filter, sort, paginate)
 - Run as a desktop app (Eel window) while serving Dash locally
-
-## Tech Stack
-
-- Python 3.11+
-- Dash
-- Plotly
-- Pandas
-- Eel
-- `uv` for dependency and environment management
 
 ## Showcase
 
@@ -37,26 +46,14 @@ The application runs as a desktop window (Eel) with an embedded Dash interface. 
 **Parallel Categories** (discrete/binned axes) — records are grouped into colored ribbon bands between axes. The same columns are displayed as stacked categorical segments with labeled tick values. Ribbon width encodes the number of records sharing that value combination, and color again follows the `COLOR_ID` scale, highlighting which category groups dominate each dimension.
 <img width="1248" height="790" alt="Parallel Categories" src="https://github.com/user-attachments/assets/8cadcb4a-eca4-470e-94c6-995ef4163b52" />
 
-## Project Structure
+## Tech Stack
 
-```text
-.
-|- app/
-|  |- controller.py
-|  |- model.py
-|  |- view.py
-|  |- data.py
-|  |- resourceController.py
-|  |- dashApp.py
-|  |- assets/
-|  \- web/
-|     \- main.html
-|- Exemplary_data/
-|  \- League_of_legends_stats.csv
-|- main.py
-|- pyproject.toml
-\- uv.lock
-```
+- Python 3.11+
+- Dash
+- Plotly
+- Pandas
+- Eel
+- `uv` for dependency and environment management
 
 ## Getting Started
 
@@ -75,4 +72,4 @@ uv run python main.py
 
 ## License
 
-MIT (see `LICENSE`).
+This project is available under the MIT License. See [LICENSE](LICENSE).
